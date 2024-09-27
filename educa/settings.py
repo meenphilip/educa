@@ -65,9 +65,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "courses.apps.CoursesConfig",
     "students.apps.StudentsConfig",
-    "embed_video",
     "debug_toolbar",
     "redisboard",
+    "rest_framework",
+    "embed_video",
 ]
 
 MIDDLEWARE = [
@@ -123,12 +124,12 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379",
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379",
+#     }
+# }
 
 # CACHES = {
 #     "default": {
@@ -193,3 +194,10 @@ MEDIA_ROOT = BASE_DIR / "media/"  # Root directory where images/files are stored
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Django Rest Framework
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
+    ]
+}
